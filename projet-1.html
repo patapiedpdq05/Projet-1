@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nunavik – Soutien à Montréal | Votre espace de sécurité</title>
+    <meta name="description" content="Un espace sécuritaire d’information et de ressources pour les patients inuits et leurs proches lors d'un séjour médical à Montréal.">
+    
+    <!-- Polices de caractères de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- DÉBUT DU CODE CSS --- */
+
+        /* Variables de couleur pour une maintenance facile */
+        :root {
+            --couleur-principale: #005A9C; /* Bleu profond */
+            --couleur-secondaire: #2A9D8F; /* Sarcelle/Turquoise */
+            --couleur-accent: #E9C46A; /* Jaune/Or doux */
+            --couleur-fond: #F8F9FA; /* Gris très clair */
+            --couleur-texte: #333333;
+            --couleur-blanc: #FFFFFF;
+            --couleur-alerte: #E76F51; /* Orange-rouge pour les alertes */
+        }
+
+        /* Style de base et réinitialisation */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Permet un défilement fluide lors du clic sur les liens d'ancrage */
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--couleur-texte);
+            background-color: var(--couleur-fond);
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Entête et Navigation */
+        header {
+            background-color: var(--couleur-principale);
+            color: var(--couleur-blanc);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        nav {
+            background-color: #004a80;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: var(--couleur-blanc);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--couleur-accent);
+        }
+        
+        /* Bannière d'aide d'urgence */
+        .emergency-banner {
+            background-color: var(--couleur-alerte);
+            color: var(--couleur-blanc);
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .emergency-banner strong {
+            font-size: 1.3rem;
+        }
+
+        .emergency-banner a {
+            color: var(--couleur-blanc);
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--couleur-blanc);
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--couleur-principale);
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            color: var(--couleur-secondaire);
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--couleur-accent);
+            padding-left: 10px;
+        }
+
+        /* Listes et liens */
+        ul {
+            list-style-position: inside;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: var(--couleur-secondaire);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cartes pour les ressources et témoignages */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: var(--couleur-blanc);
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .card h4 {
+            color: var(--couleur-principale);
+            margin-bottom: 10px;
+        }
+
+        /* Style pour les témoignages vidéo (Reels/Shorts) */
+        .reels-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .reel-placeholder {
+            background-color: #222;
+            color: white;
+            aspect-ratio: 9 / 16;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border: 2px solid var(--couleur-accent);
+        }
+
+        .reel-placeholder::before {
+            content: '▶'; /* Symbole de lecture */
+            font-size: 4rem;
+            color: rgba(255, 255, 255, 0.7);
+            transition: transform 0.3s ease;
+        }
+        
+        .reel-placeholder:hover::before {
+            transform: scale(1.2);
+        }
+
+        .reel-placeholder .reel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 30px 15px 15px 15px;
+            font-size: 0.9rem;
+        }
+        
+        /* Partenaires */
+        .partners-list {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .partners-list li {
+            background: var(--couleur-blanc);
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .partners-list li.main-partner {
+            background-color: var(--couleur-accent);
+            color: var(--couleur-texte);
+            font-weight: bold;
+            border-color: var(--couleur-accent);
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: #222;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        footer a {
+            color: var(--couleur-accent);
+        }
+
+        /* Responsive design pour les petits écrans */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+        }
+
+        /* --- FIN DU CODE CSS --- */
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Nunavik – Soutien à Montréal</h1>
+            <p>Cher patient inuit, cher proche, bienvenue. Taliqqanarniq! Welcome!</p>
+            <p>Un espace sécuritaire d’information et de ressources, axé sur votre sécurité et votre bien-être.</p>
+        </div>
+    </header>
+
+    <div class="emergency-banner">
+        <div class="container">
+            <strong>BESOIN D'AIDE IMMÉDIATE (24/7) ?</strong><br>
+            Drogue : Aide et référence : <strong>514 527-2626</strong> (Montréal) ou <strong>1 800 265-2626</strong> (Québec)<br>
+            <a href="https://www.aidedrogue.ca/clavardage" target="_blank">Clavardage confidentiel 24/7</a>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#vulnerabilite">Comprendre les risques</a></li>
+                <li><a href="#prevention">Prévention & Sécurité</a></li>
+                <li><a href="#ressources">Ressources & Soutien</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="accueil">
+            <div class="container">
+                <h2>Un espace sûr pour votre séjour médical</h2>
+                <p>Chaque année, des centaines de patients inuits voyagent depuis le Nunavik vers Montréal pour des soins spécialisés. Ce déplacement, bien que nécessaire, peut vous rendre vulnérable. Notre projet vise à vous offrir un espace sécuritaire d'information et de ressources, conçu avec vous et pour vous.</p>
+                <p>Nous sommes ici pour vous accompagner avec une approche culturellement adaptée, axée sur la confiance et le non-jugement. Vous n'êtes pas seul(e).</p>
+            </div>
+        </section>
+
+        <section id="vulnerabilite">
+            <div class="container">
+                <h2>Comprendre les risques à Montréal</h2>
+                <h3>L'isolement et les barrières</h3>
+                <ul>
+                    <li><strong>Isolement culturel :</strong> Être loin de votre famille, de votre langue et de vos coutumes peut créer un sentiment de déconnexion et d'aliénation.</li>
+                    <li><strong>Barrières de communication :</strong> Le jargon médical et les différences culturelles peuvent rendre les échanges avec les soignants difficiles et créer un sentiment de non-sécurité.</li>
+                    <li><strong>Méfiance historique :</strong> Les expériences passées avec le système de santé peuvent générer de la peur et de la méfiance, notamment la crainte de ne jamais rentrer à la maison.</li>
+                </ul>
+
+                <h3>Le risque d'exploitation</h3>
+                <ul>
+                    <li><strong>Ciblage par des groupes criminels :</strong> Malheureusement, des individus malveillants ciblent les patients inuits isolés pour le trafic de drogues, comme le crack.</li>
+                    <li><strong>Le crack :</strong> C'est une drogue puissante et très addictive. L'euphorie est intense mais courte, menant à une dépendance rapide et dévastatrice.</li>
+                    <li><strong>Environnement d'Ullivik :</strong> La zone autour du centre peut parfois attirer des trafiquants, ce qui met en danger la sécurité des patients.</li>
+                </ul>
+                 <h3>Comprendre la dépendance</h3>
+                <ul>
+                    <li><strong>Un symptôme, pas une faiblesse :</strong> La consommation de substances est souvent une réponse à une souffrance profonde, liée à des traumatismes, la pauvreté ou le logement inadéquat.</li>
+                    <li><strong>Un parcours personnel :</strong> Le rétablissement n'est pas une ligne droite. Il est unique à chacun et comporte des hauts et des bas. Chaque pas compte.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="prevention">
+            <div class="container">
+                <h2>Prévention & Sécurité : Vos outils pour Montréal</h2>
+                <h3>Comment vous protéger</h3>
+                <div class="card-grid">
+                    <div class="card">
+                        <h4>Refusez les inconnus</h4>
+                        <p>Ne jamais accepter de drogues, d'alcool, d'argent ou de colis de la part d'étrangers. Ne rendez jamais de "petits services".</p>
+                    </div>
+                    <div class="card">
+                        <h4>Vérifiez l'identité</h4>
+                        <p>Si une personne prétend travailler pour l'hôpital ou Ullivik, demandez toujours à voir sa carte d'identité officielle.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Parlez-en !</h4>
+                        <p>Si vous vous sentez menacé(e) ou en danger, parlez-en immédiatement à un navigateur de patients, au personnel d'Ullivik ou à un agent de liaison autochtone du SPVM.</p>
+                    </div>
+                </div>
+
+                <h3>La réduction des méfaits : Limiter les risques</h3>
+                <p>La réduction des méfaits vise à minimiser les conséquences négatives de la consommation de drogues, sans porter de jugement. C'est une approche pragmatique et humaine.</p>
+                <ul>
+                    <li><strong>Kits de consommation sécuritaires :</strong> Pour réduire les risques d'infections (VIH, hépatite C) et de blessures.</li>
+                    <li><strong>Analyse de substances :</strong> Pour vérifier si des drogues contiennent du fentanyl, une substance extrêmement dangereuse.</li>
+                    <li><strong>Naloxone :</strong> Un médicament qui peut inverser les surdoses d'opioïdes et sauver des vies. Des trousses sont disponibles gratuitement.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="ressources">
+            <div class="container">
+                <h2>Ressources & Soutien culturellement adapté</h2>
+                <p>De nombreuses ressources existent pour vous aider. Elles sont là pour vous écouter sans jugement.</p>
+                
+                <h3>Accompagnement et Santé</h3>
+                 <div class="card-grid">
+                    <div class="card">
+                        <h4>Qavvivik (Clinique pour Inuits)</h4>
+                        <p>Une clinique sans rendez-vous dirigée par des Inuits à Verdun. Le personnel et les interprètes sont formés à la culture inuite. Vous pouvez y aller même sans carte RAMQ.</p>
+                    </div>
+                     <div class="card">
+                        <h4>Agents de liaison autochtones (CUSM)</h4>
+                        <p>Ces agents peuvent vous accompagner à vos rendez-vous, vous aider à comprendre les traitements et faire le pont entre vous et les équipes médicales.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Ullivik</h4>
+                        <p>Le personnel d'Ullivik coordonne votre séjour (transport, hébergement, interprètes) et peut vous orienter vers des services de sécurité ou de soutien.</p>
+                    </div>
+                </div>
+                
+                <h3>Soutien Communautaire et Légal</h3>
+                 <div class="card-grid">
+                    <div class="card">
+                        <h4>Centres communautaires</h4>
+                        <p>Des endroits comme le Foyer pour femmes autochtones de Montréal (NWSM), le Centre d'amitié autochtone de Montréal ou Avataq offrent des activités culturelles (couture, tambour) pour vous reconnecter à votre communauté.</p>
+                    </div>
+                    <div class="card">
+                        <h4>SPVM - Liaison autochtone</h4>
+                        <p>Des policiers formés aux réalités culturelles qui travaillent à bâtir la confiance. Ils peuvent vous aider si vous êtes victime d'exploitation.</p>
+                    </div>
+                     <div class="card">
+                        <h4>CACTUS Montréal</h4>
+                        <p>Un organisme qui offre du matériel de consommation stérile, des tests de dépistage et un soutien communautaire directement dans la rue.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="temoignages">
+            <div class="container">
+                <h2>Témoignages : L'espoir par l'expérience vécue</h2>
+                <p>Le rétablissement est possible. Écoutez les histoires d'Inuits qui ont traversé ces épreuves et qui partagent leur parcours avec espoir et résilience. Leur voix est une source de force.</p>
+                
+                <div class="reels-gallery">
+                    <div class="reel-placeholder">
+                         <div class="reel-caption">
+                            <strong>Témoignage d'un aîné</strong><br>
+                            En inuktitut (sous-titré). Il parle de la reconnexion à la culture comme chemin de guérison.
+                        </div>
+                    </div>
+                    <div class="reel-placeholder">
+                         <div class="reel-caption">
+                            <strong>Le parcours d'une jeune femme</strong><br>
+                            En français. Elle raconte comment elle a trouvé de l'aide à Montréal et a pu rentrer chez elle en sécurité.
+                        </div>
+                    </div>
+                     <div class="reel-placeholder">
+                         <div class="reel-caption">
+                            <strong>"Mon message aux jeunes"</strong><br>
+                            En inuktitut (sous-titré). Un ancien usager partage des conseils pour rester en sécurité.
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align:center; margin-top: 30px;"><em>Ces vidéos, mettant en vedette des membres de la communauté inuite, seront bientôt disponibles ici.</em></p>
+            </div>
+        </section>
+
+        <section id="apropos">
+            <div class="container">
+                <h2>À Propos de "Nunavik – Soutien à Montréal"</h2>
+                <p>Ce projet est une initiative collaborative, co-construite avec le savoir et l'expérience des Inuits. Notre approche est basée sur l'humilité culturelle, les soins tenant compte des traumatismes et une vision qui combine les savoirs autochtones et occidentaux ("Two-Eyed Seeing").</p>
+                <h3>Nos précieux partenaires</h3>
+                <ul class="partners-list">
+                    <li class="main-partner">Société Makivik</li>
+                    <li>Drogue : Aide et référence</li>
+                    <li>Ullivik</li>
+                    <li>Clinique Qavvivik</li>
+                    <li>CUSM</li>
+                    <li>SPVM - Liaison autochtone</li>
+                    <li>Foyer pour femmes autochtones de Montréal</li>
+                    <li>CACTUS Montréal</li>
+                    <li>Conseil Régional de la Santé et des Services Sociaux du Nunavik</li>
+                    <li>Et bien d'autres...</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nunavik – Soutien à Montréal. Un projet pour la communauté, par la communauté.</p>
+            <p>Ce site est une ressource d'information et ne remplace pas un avis médical professionnel. En cas d'urgence, composez le 911.</p>
+        </div>
+    </footer>
+
+    <!-- Il n'y a pas besoin de code JavaScript pour les fonctionnalités de base de ce site.
+         La propriété CSS `scroll-behavior: smooth;` s'occupe déjà du défilement fluide. -->
+
+</body>
+</html>
